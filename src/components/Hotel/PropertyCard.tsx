@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { Hotel } from "@/types/Hotel";
+import { Propiedad } from "@/types/Propiedad";
 import { Card, CardHeader, CardBody } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
 import { Skeleton } from "@nextui-org/skeleton";
 
-export default function BooknigCard(props: Hotel): JSX.Element {
-  const { id, hotelName, location, price, category, image } = props;
+export default function BooknigCard(props: Propiedad): JSX.Element {
+  const { id, nombre, imagen,  descripcion, direccion, tipo, propietarioId, precioPorNoche, numeroDeHabitaciones } = props;
 
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -26,17 +26,17 @@ export default function BooknigCard(props: Hotel): JSX.Element {
       className="w-72 py-4"
     >
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-        <h4 className="font-bold text-large">{hotelName}</h4>
-        <small className="text-default-500">${price} noche</small>
-        <p className="text-tiny uppercase font-bold">{location}</p>
+        <h4 className="font-bold text-large">{nombre}</h4>
+        <small className="text-default-500">${precioPorNoche} noche</small>
+        <p className="text-tiny uppercase font-bold">{direccion}</p>
       </CardHeader>
       <CardBody className="overflow-visible py-2">
         <Skeleton isLoaded={isLoaded} className="object-cover rounded-xl">
           <Image
             onLoad={toggleLoad}
-            alt={hotelName}
+            alt={`Hotel ${nombre}`}
             className="object-cover rounded-xl"
-            src={image}
+            src={imagen}
             width={270}
           />
         </Skeleton>

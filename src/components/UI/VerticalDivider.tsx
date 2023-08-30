@@ -2,7 +2,7 @@
 
 import { Divider } from "@nextui-org/react";
 
-export default function VerDivider() {
+export default function VerticalDivider() {
   return (
     <>
       <Divider orientation="vertical" />

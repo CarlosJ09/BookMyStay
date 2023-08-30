@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import {Switch, useSwitch, VisuallyHidden, SwitchProps} from "@nextui-org/react";
+import { useSwitch, VisuallyHidden, SwitchProps} from "@nextui-org/react";
 import {MoonIcon} from "./MoonIcon";
 import {SunIcon} from "./SunIcon";
 

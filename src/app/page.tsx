@@ -5,7 +5,7 @@ import Home from "../components/Hotel/Home";
 export default function Page(): JSX.Element {
   return (
     <div>
-      <NavBar />
+      <NavBar isActive={"hotel"} />
       <main className="flex flex-col justify-center">
         <section className="flex justify-center my-10">
           <Home />

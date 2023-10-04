@@ -11,7 +11,8 @@ import { Button } from "@nextui-org/button";
 
 import { currentUser, UserButton } from "@clerk/nextjs";
 
-export default async function NavBar(): Promise<JSX.Element> {
+export default async function NavBar(props: any): Promise<JSX.Element> {
+  const { isActive } = props;
   const user = await currentUser();
 
   return (
@@ -21,17 +22,17 @@ export default async function NavBar(): Promise<JSX.Element> {
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-6" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="/reservation">
+          <Link color="foreground" className={`${isActive == "reservacion" ? 'font-bold text-blue-800' : ''}`} href="/reservation">
             Reservations
           </Link>
         </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="/" aria-current="page">
+        <NavbarItem>
+          <Link color="foreground" className={`${isActive == "hotel" ? 'font-bold text-blue-800' : ''}`} href="/">
             Hotels
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="/about">
+          <Link color="foreground" className={`${isActive == "about" ? 'font-bold text-blue-800' : ''}`} href="/about">
             About us
           </Link>
         </NavbarItem>

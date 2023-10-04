@@ -2,6 +2,12 @@ import { Webhook } from "svix";
 import { headers } from "next/headers";
 import { WebhookEvent } from "@clerk/nextjs/server";
 
+import { CLIENTS_ENDPOINT } from "@/consts";
+
+import { saveClient } from "../client/save";
+import { updateClient } from "../client/update";
+import { deleteClient } from "../client/delete";
+
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
@@ -48,32 +54,44 @@ export async function POST(req: Request) {
     });
   }
 
-  // Get the ID and type
-  const { id } = evt.data;
+  // Get the type
   const eventType = evt.type;
 
   switch (eventType) {
     case "user.created":
-      const firstName = evt.data.first_name;
-      const lastName = evt.data.last_name;
-      const emails = evt.data.email_addresses;
-
-      console.log(firstName + id);
-      break;
+      const clientData = {
+        id: evt.data.id,
+        nombre: evt.data.first_name,
+        apellido: evt.data.last_name || "",
+        email: evt.data.email_addresses[0].email_address,
+        phoneNumber: "",
+      };
+      saveClient(CLIENTS_ENDPOINT, clientData);
+      return new Response(`Cliente ${clientData.id} creado con exito`, {
+        status: 201,
+      });
 
     case "user.updated":
-      console.log(`User ${id} was updated.`);
-      break;
+      const clientData2 = {
+        id: evt.data.id,
+        nombre: evt.data.first_name,
+        apellido: evt.data.last_name || "",
+        email: evt.data.email_addresses[0].email_address,
+        phoneNumber: "",
+      };
+      updateClient(CLIENTS_ENDPOINT, clientData2, clientData2.id);
+      return new Response(`Cliente ${clientData2.id} actualizado con exito`, {
+        status: 200,
+      });
 
     case "user.deleted":
-      console.log(`User ${id} was deleted.`);
-      break;
+      const id = evt.data.id;
+      deleteClient(CLIENTS_ENDPOINT, id);
+      return new Response(`Cliente ${id} eliminado con exito`, { status: 200 });
 
     default:
       return new Response("Error occured", {
         status: 500,
       });
   }
-
-  return new Response("", { status: 201 });
 }

@@ -30,7 +30,7 @@ export default function ReservationList() {
             fechaFin={reservation.fechaFin}
             estado={reservation.estado}
             total={reservation.total}
-          />
+          ></ReservationCard>
         ))}
       </div>
     </div>

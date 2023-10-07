@@ -3,6 +3,7 @@
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { Propiedad } from "@/types/Propiedad";
 import ReservationCard from "@/components/Hotel/ReservationCard";
+import Comments from "@/components/Hotel/Comments";
 
 import { PROPERTIES_ENDPOINT } from "../../../consts/index";
 
@@ -29,21 +30,14 @@ export default function Hotel({ params }: Params) {
           <div className="w-96">
             <Image src={property?.imagen} alt={property?.nombre} />
           </div>
-          <div className="max-w-96 mx-12 h-28 text-base flex justify-center gap-x-8 overflow-clip overflow-x-clip overflow-y-auto">
-            <p>{property?.descripcion}</p>
+          <div className="w-10/12 mx-12 h-fit my-10 text-base flex justify-center gap-x-8 overflow-clip overflow-x-hidden overflow-y-auto">
+            <p className="text-justify">{property?.descripcion}</p>
           </div>
-          <div className="w-full flex flex-col justify-center gap-8 items-center">
-            <h1>Comentarios: </h1>
-            <div className="max-w-96 mx-12 h-52 text-base flex justify-center gap-x-8 overflow-x-clip overflow-y-auto">
-              <h3>Carlos</h3>
-              <p>
-                dqwndiqw dqwdqwd qwd qw dqwd qwd qwdq qwdqwdqwdqwd qwdq dqw qwd
-                qwdqwdqdq dqwndiqw dqwdqwd qwd qw dqwd qwd qwdq qwdqwdqwdqwd
-                qwdq dqw qwd qwdqwdqdq
-              </p>
-            </div>
+          <div className="w-full mb-8">
+            <Comments />
           </div>
         </div>
+
         <div className="w-full flex justify-center items-center col-span-1">
           <ReservationCard />
         </div>

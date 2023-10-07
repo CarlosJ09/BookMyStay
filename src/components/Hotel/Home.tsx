@@ -5,6 +5,7 @@ import { CategoryList } from "../../utils/CategoryList";
 import { useEffect, useState } from "react";
 
 import PropertyCard from "@/components/Hotel/PropertyCard";
+import { Pagination } from "@nextui-org/react";
 
 import * as constants from "../../consts/index";
 import { Propiedad } from "@/types/Propiedad";
@@ -66,6 +67,9 @@ export default function Categories(): JSX.Element {
             numeroDeHabitaciones={hotel.numeroDeHabitaciones}
           ></PropertyCard>
         ))}
+      </div>
+      <div className="fixed bottom-4 inset-x-0 flex justify-center">
+        <Pagination total={10} initialPage={1} />
       </div>
     </div>
   );

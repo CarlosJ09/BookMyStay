@@ -28,7 +28,7 @@ export default function PropertyCard(props: Propiedad): JSX.Element {
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
         <h4 className="font-bold text-large">{nombre}</h4>
         <small className="text-default-500">${precioPorNoche} noche</small>
-        <p className="text-tiny uppercase font-bold">{direccion}</p>
+        <p className="text-tiny uppercase font-bold overflow">{direccion}</p>
       </CardHeader>
       <CardBody className="overflow-visible py-2">
         <Skeleton isLoaded={isLoaded} className="object-cover rounded-xl">

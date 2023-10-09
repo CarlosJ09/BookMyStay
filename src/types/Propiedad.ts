@@ -1,5 +1,5 @@
 export interface Propiedad {
-  id: number;
+  id: string;
   nombre: string;
   imagen: string;
   descripcion: string;

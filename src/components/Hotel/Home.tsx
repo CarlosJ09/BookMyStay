@@ -1,13 +1,13 @@
 "use client";
 
-import { Button } from "@nextui-org/react";
 import { CategoryList } from "../../utils/CategoryList";
 import { useEffect, useState } from "react";
 
 import PropertyCard from "@/components/Hotel/PropertyCard";
-import { Pagination } from "@nextui-org/react";
 
-import * as constants from "../../consts/index";
+import { Pagination, Button } from "@nextui-org/react";
+
+import { PROPERTIES_ENDPOINT } from "../../consts/index";
 import { Propiedad } from "@/types/Propiedad";
 
 export default function Categories(): JSX.Element {
@@ -15,19 +15,21 @@ export default function Categories(): JSX.Element {
 
   const [selectedCategory, setSelectedCategory] = useState("");
 
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
   useEffect(() => {
-    fetch(constants.PROPERTIES_ENDPOINT)
+    fetch(
+      `${PROPERTIES_ENDPOINT}?pageNumber=${currentPage}&pageSize=${20}&tipo=${selectedCategory}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setProperties(data);
+      })
+      .catch((error) => {
+        setProperties([])
+        console.error("Error:", error);
       });
-  }, []);
-
-  const filteredProperties = properties?.filter((property: Propiedad) =>
-    selectedCategory.length === 0
-      ? properties
-      : property.tipo === selectedCategory
-  );
+  }, [currentPage, selectedCategory]);
 
   const handleCategoryClick = (category: string) => {
     if (selectedCategory === category) {
@@ -53,23 +55,32 @@ export default function Categories(): JSX.Element {
         ))}
       </div>
       <div className="gap-12 grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mx-auto my-10">
-        {filteredProperties?.map((hotel) => (
-          <PropertyCard
-            key={hotel.id}
-            id={hotel.id}
-            nombre={hotel.nombre}
-            imagen={hotel.imagen}
-            descripcion={hotel.descripcion}
-            direccion={hotel.direccion}
-            tipo={hotel.tipo}
-            propietarioId={hotel.propietarioId}
-            precioPorNoche={hotel.precioPorNoche}
-            numeroDeHabitaciones={hotel.numeroDeHabitaciones}
-          ></PropertyCard>
-        ))}
+        {properties?.length === 0 ? (
+          <p className="flex justify-center items-center text-2xl">No hay propiedades disponibles con esas características.</p>
+        ) : (
+          properties?.map((hotel) => (
+            <PropertyCard
+              key={hotel.id}
+              id={hotel.id}
+              nombre={hotel.nombre}
+              imagen={hotel.imagen}
+              descripcion={hotel.descripcion}
+              direccion={hotel.direccion}
+              tipo={hotel.tipo}
+              propietarioId={hotel.propietarioId}
+              precioPorNoche={hotel.precioPorNoche}
+              numeroDeHabitaciones={hotel.numeroDeHabitaciones}
+            ></PropertyCard>
+          ))
+        )}
       </div>
-      <div className="fixed bottom-4 inset-x-0 flex justify-center">
-        <Pagination total={10} initialPage={1} />
+      <div className="fixed bottom-4 inset-x-0 flex justify-center z-50">
+        <Pagination
+          page={currentPage}
+          onChange={setCurrentPage}
+          total={20}
+          initialPage={1}
+        />
       </div>
     </div>
   );

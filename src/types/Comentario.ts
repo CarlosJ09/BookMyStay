@@ -1,5 +1,5 @@
 export interface Comentario {
-  clienteId: number;
+  clienteId: string;
   texto: string;
   propiedadId: string;
   fecha: string;

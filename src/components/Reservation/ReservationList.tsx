@@ -6,11 +6,12 @@ import ReservationCard from "./ReservationCard";
 
 import { useState, useEffect } from "react";
 
-export default function ReservationList() {
+export default function ReservationList(props: any) {
+  const { clienteId } = props;
   const [reservations, setReservations] = useState<Reservacion[]>();
 
   useEffect(() => {
-    fetch(RESERVATION_ENDPOINT)
+    fetch(`${RESERVATION_ENDPOINT}/${clienteId}`)
       .then((res) => res.json())
       .then((data) => {
         setReservations(data);

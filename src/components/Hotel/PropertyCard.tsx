@@ -35,7 +35,7 @@ export default function PropertyCard(props: Propiedad): JSX.Element {
           <Image
             onLoad={toggleLoad}
             alt={`Hotel ${nombre}`}
-            className="object-cover rounded-xl"
+            className="bg-cover rounded-xl"
             src={imagen}
             width={270}
           />

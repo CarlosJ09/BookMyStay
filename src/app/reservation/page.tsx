@@ -2,17 +2,20 @@ import VerticalDivider from "../../components/UI/VerticalDivider";
 import NavBar from "@/components/UI/NavBar";
 
 import ReservationList from "@/components/Reservation/ReservationList";
+import ActiveReservation from "@/components/Reservation/ActiveReservations";
+import { currentUser } from "@clerk/nextjs";
 
-export default function Reservations() {
+export default async function Reservations() {
+  const user = await currentUser();
 
   return (
     <div>
       <NavBar isActive={"reservacion"} />
       <div className="w-full flex justify-center">
         <div className="w-1/2 h-full text-center my-10">
-          <h2 className="text-xl">Past Reservations</h2>
+          <h2 className="text-xl">Past Reservations {user?.id}</h2>
           <div>
-            <ReservationList />
+            <ReservationList clienteId={user?.id} />
           </div>
         </div>
         <div className="h-screen">
@@ -20,6 +23,9 @@ export default function Reservations() {
         </div>
         <div className="w-1/2 h-full text-center my-10">
           <h2 className="text-xl">Now</h2>
+          <div>
+            <ActiveReservation clienteId={user?.id} />
+          </div>
         </div>
       </div>
     </div>

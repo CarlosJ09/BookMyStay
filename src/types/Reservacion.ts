@@ -1,6 +1,6 @@
 export interface Reservacion {
-    id: number;
-    clienteId: number;
+    id: string;
+    clienteId: string;
     propiedadId: string;
     fechaInicio: string;
     fechaFin: string;

@@ -8,16 +8,33 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 
-import { DELETE_RESERVATION_ENDPOINT } from "../../consts";
+import { COMMENTS_ENDPOINT } from "../../consts";
 
-import { deleteReservation } from "@/app/api/booking/delete";
+import { saveComment } from "@/app/api/comment/comment";
 
 import { Textarea } from "@nextui-org/react";
+
+import { useState } from "react";
 
 export default function ModalDelete(props: any) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const { reservationId } = props;
+  const { propiedadId, clienteId } = props;
+
+  const [comentario, setComentario] = useState('');
+
+  const handleChangeComentario = (event: any) => {
+    setComentario(event.target.value);
+    console.log(comentario)
+  };
+
+  const commentData = {
+    id: {},
+    clienteId: clienteId,
+    texto: comentario,
+    propiedadId: propiedadId,
+    fecha: "2023-10-10T15:06:12.338Z",
+  };
 
   return (
     <>
@@ -37,6 +54,7 @@ export default function ModalDelete(props: any) {
                   labelPlacement="outside"
                   placeholder="Introduce tu comentario aquí"
                   className="max-w-xs"
+                  onChange={(e) => handleChangeComentario(e)}
                 />
               </ModalBody>
               <ModalFooter>
@@ -47,9 +65,7 @@ export default function ModalDelete(props: any) {
                   color="success"
                   variant="light"
                   onPress={() =>
-                    deleteReservation(
-                      `${DELETE_RESERVATION_ENDPOINT}/${reservationId}`
-                    )
+                    saveComment(COMMENTS_ENDPOINT, commentData)
                   }
                 >
                   Agregar

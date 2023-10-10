@@ -103,14 +103,15 @@ export default function Hotel({ params }: Params) {
                     <div className="px-1 py-2">
                       <div className="text-xs">
                         Para agregar un comentario debe haber reservado esta
-                        propiedad al menos una vez.
+                        propiedad al menos una vez, podrá hacerlo en la sección de
+                        Reservaciones.
                       </div>
                     </div>
                   </PopoverContent>
                 </Popover>
               </div>
               <div className="w-11/12 h-fit min-h-unit-8 max-h-60 text-base flex flex-col items-start justify-start gap-x-8 overflow-y-auto border-1 rounded-lg">
-                {comments && comments.length < 0 ? (
+                {comments && comments.length > 0 ? (
                   comments.map((comentario, index) => (
                     <div key={index}>
                       <h3 className="font-bold p-2">{comentario?.clienteId}</h3>

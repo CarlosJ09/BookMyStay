@@ -5,7 +5,6 @@ import { Input } from "@nextui-org/react";
 import { useState, useEffect } from "react";
 
 import { useAuth } from "@clerk/nextjs";
-import { useRouter } from "next/router";
 
 export default function ReservationCard(props: any) {
   const { id, propiedadId, total } = props;
@@ -39,14 +38,12 @@ export default function ReservationCard(props: any) {
   };
 
   const reservationData = {
-    ClienteId: userId,
-    PropiedadId: propiedadId,
-    FechaInicio: startDate.split("T")[0],
-    FechaFin: endDate.split("T")[0],
-    Estado: "Disfruta el viaje"
+    clienteId: userId,
+    propiedadId: propiedadId,
+    fechaInicio: startDate.split("T")[0], // Usar startDate en lugar de ""
+    fechaFin: endDate.split("T")[0], // Usar endDate en lugar de ""
+    estado: "Disfruta el viaje",
   };
-
-  console.log(reservationData)
 
   return (
     <Card
@@ -73,7 +70,7 @@ export default function ReservationCard(props: any) {
               Fecha de entrega: <b>{endDate.split("T")[0]}</b>
             </p>
           </div>
-          <p>Total: RD${(total * selectedDate).toFixed(2)}</p>
+          <p>Total: {userId} RD${(total * selectedDate).toFixed(2)}</p>
           <Button
             type="submit"
             isIconOnly
@@ -86,7 +83,7 @@ export default function ReservationCard(props: any) {
               }
             }}
           >
-            Reservar
+            Reservar 
           </Button>
         </form>
       </CardBody>

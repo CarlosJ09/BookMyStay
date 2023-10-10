@@ -1,4 +1,4 @@
-export async function Reserve(url: string, reserveData: any) {
+export async function saveComment(url: string, commentData: any) {
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -6,13 +6,14 @@ export async function Reserve(url: string, reserveData: any) {
         "Content-Type": "application/json",
       },
       mode: "cors",
-      body: JSON.stringify(reserveData),
+      body: JSON.stringify(commentData),
     });
 
     if (response.status === 201) {
-      console.log("Property reserved successfully.");
+      console.log("Comment created successfully.");
+      window.location.reload();
     } else {
-      console.error("Error occurred while reserving this property.");
+      console.error("Error occurred while creating the comment.");
     }
   } catch (error) {
     console.error("An error occurred:", error);

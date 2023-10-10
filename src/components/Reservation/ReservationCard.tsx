@@ -43,7 +43,7 @@ export default function ReservationCard(props: Reservacion): JSX.Element {
         </div>
       ) : (
         <div className="absolute right-4 bottom-4">
-          <ModalComment reservationId={id} />
+          <ModalComment propiedadId={propiedadId} clienteId={clienteId} />
         </div>
       )}
     </Card>

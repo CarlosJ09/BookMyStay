@@ -9,7 +9,7 @@ export default function AboutUs() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Nuestra Misión</h2>
           <p>
-            En <span className="font-bold">Nombre de la Compañía</span>, nuestra
+            En <span className="font-bold">Book My Stay</span>, nuestra
             misión es brindarte una experiencia inolvidable de alojamiento.
             Somos una empresa dedicada a proporcionar alojamiento de calidad y
             comodidad para tus viajes, ya sea por negocios o placer. Fundada con
@@ -21,10 +21,10 @@ export default function AboutUs() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Nuestra Historia</h2>
           <p>
-            Hace <span className="font-bold">[número de años]</span> años, un
+            Hace <span className="font-bold">5</span> años, un
             equipo de apasionados viajeros y entusiastas de la hospitalidad se
             unió para crear{" "}
-            <span className="font-bold">Nombre de la Compañía</span>. Nos dimos
+            <span className="font-bold">Book My Stay</span>. Nos dimos
             cuenta de que las experiencias de alojamiento podían ser más que
             simplemente un lugar para descansar. Así nació la idea de ofrecer
             habitaciones que no solo fueran cómodas y convenientes, sino también
@@ -33,7 +33,7 @@ export default function AboutUs() {
           <p>
             A lo largo de los años, hemos crecido y evolucionado, extendiendo
             nuestra presencia a lo largo y ancho de{" "}
-            <span className="font-bold">[ubicación]</span>. Nuestra dedicación a
+            <span className="font-bold">Santo Domingo</span>. Nuestra dedicación a
             la calidad, el servicio y la satisfacción del cliente ha sido la
             fuerza impulsora detrás de nuestro crecimiento constante.
           </p>
@@ -42,7 +42,7 @@ export default function AboutUs() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Nuestro Compromiso</h2>
           <p>
-            En <span className="font-bold">Nombre de la Compañía</span>, nos
+            En <span className="font-bold">Book My Stay</span>, nos
             comprometemos a brindarte una experiencia de alojamiento
             excepcional. Cada una de nuestras habitaciones ha sido
             cuidadosamente diseñada y equipada para asegurar tu comodidad y
@@ -61,7 +61,7 @@ export default function AboutUs() {
           <h2 className="text-2xl font-semibold mb-4">Explora y Descubre</h2>
           <p>
             Además de habitaciones confortables,{" "}
-            <span className="font-bold">Nombre de la Compañía</span> ofrece una
+            <span className="font-bold">Book My Stay</span> ofrece una
             ubicación estratégica que te permite explorar fácilmente los lugares
             de interés locales, restaurantes y actividades emocionantes.
             Queremos que aproveches al máximo tu tiempo aquí y te sumerjas en la
@@ -70,7 +70,7 @@ export default function AboutUs() {
           <p>
             Ya sea que estés aquí por negocios o por placer, te invitamos a
             descubrir todo lo que{" "}
-            <span className="font-bold">Nombre de la Compañía</span> tiene para
+            <span className="font-bold">Book My Stay</span> tiene para
             ofrecer. ¡Esperamos tener el privilegio de recibirte y hacerte
             sentir como en casa en tu próximo viaje!
           </p>
@@ -85,13 +85,13 @@ export default function AboutUs() {
           </p>
           <p>
             Gracias por considerar{" "}
-            <span className="font-bold">Nombre de la Compañía</span> para tu
+            <span className="font-bold">Book My Stay</span> para tu
             próximo alojamiento. Esperamos darte la bienvenida pronto y hacer
             que tu estadía sea memorable.
           </p>
           <p>
             ¡Bienvenido a{" "}
-            <span className="font-bold">Nombre de la Compañía</span>!
+            <span className="font-bold">Book My Stay</span>!
           </p>
         </section>
       </div>

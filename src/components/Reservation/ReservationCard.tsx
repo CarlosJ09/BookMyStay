@@ -1,7 +1,6 @@
 "use client";
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import ModalDelete from "../../components/Reservation/ModalDelete";
+import ModalComment from "../../components/Reservation/ModalComment";
 
 import { Reservacion } from "@/types/Reservacion";
 import { Card, CardHeader, CardBody } from "@nextui-org/card";
@@ -38,6 +37,15 @@ export default function ReservationCard(props: Reservacion): JSX.Element {
           </Chip>
         )}
       </div>
+      {estado == "Disfruta el viaje" ? (
+        <div className="absolute right-4 bottom-4">
+          <ModalDelete reservationId={id} />
+        </div>
+      ) : (
+        <div className="absolute right-4 bottom-4">
+          <ModalComment reservationId={id} />
+        </div>
+      )}
     </Card>
   );
 }

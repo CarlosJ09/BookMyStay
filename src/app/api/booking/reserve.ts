@@ -1,14 +1,14 @@
 import { Reservacion } from "@/types/Reservacion";
 
-export async function Reserve(url: string, reserveData: Reservacion) {
+export async function Reserve(url: string, reserveData: any) {
   try {
     const response = await fetch(url, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
       },
       mode: "cors",
-      body: JSON.stringify(reserveData),
+      body: reserveData,
     });
 
     if (response.status === 200) {

@@ -20,7 +20,7 @@ export default function ActiveReservation(props: any) {
 
   return (
     <div className="w-full flex justify-center">
-      <div>
+      <div className="flex flex-col gap-6">
         {reservations?.filter(
           (reservation) => reservation.estado != "Disfruta el viaje"
         ).length === 0 || !reservations ? (

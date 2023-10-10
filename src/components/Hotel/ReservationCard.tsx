@@ -1,11 +1,15 @@
 import { Card, CardBody, Button } from "@nextui-org/react";
-import { RESERVATION_ENDPOINT } from "@/consts";
+import { CREATE_RESERVATION_ENDPOINT } from "@/consts";
 import { Reserve } from "@/app/api/booking/reserve";
 import { Input } from "@nextui-org/react";
 import { useState, useEffect } from "react";
 
+import { useAuth } from "@clerk/nextjs";
+import { useRouter } from "next/router";
+
 export default function ReservationCard(props: any) {
   const { id, propiedadId, total } = props;
+  const { userId, sessionId, getToken } = useAuth();
 
   const [selectedDate, setSelectedDate] = useState<any>(0);
   const [startDate, setStartDate] = useState<string>("");
@@ -35,14 +39,14 @@ export default function ReservationCard(props: any) {
   };
 
   const reservationData = {
-    id: id,
-    clienteId: "",
-    propiedadId: propiedadId,
-    fechaInicio: startDate, // Usar startDate en lugar de ""
-    fechaFin: endDate, // Usar endDate en lugar de ""
-    estado: "Disfruta el viaje",
-    total: total,
+    ClienteId: userId,
+    PropiedadId: propiedadId,
+    FechaInicio: startDate.split("T")[0],
+    FechaFin: endDate.split("T")[0],
+    Estado: "Disfruta el viaje"
   };
+
+  console.log(reservationData)
 
   return (
     <Card
@@ -78,7 +82,7 @@ export default function ReservationCard(props: any) {
             variant="solid"
             onClick={() => {
               if (startDate !== endDate) {
-                Reserve(RESERVATION_ENDPOINT, reservationData);
+                Reserve(CREATE_RESERVATION_ENDPOINT, reservationData);
               }
             }}
           >

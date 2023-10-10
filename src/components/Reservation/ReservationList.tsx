@@ -20,7 +20,7 @@ export default function ReservationList(props: any) {
 
   return (
     <div className="w-full flex justify-center">
-      <div>
+      <div className="flex flex-col gap-6">
         {reservations?.length === 0 || !reservations ? (
           <p className="mt-32 text-lg">
             No cuenta con ninguna reservación hasta la fecha.

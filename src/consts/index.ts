@@ -1,12 +1,12 @@
-export const PROPERTIES_ENDPOINT = "https://hotelapi-xhz4-dev.fl0.io/api/Propiedades";
+export const PROPERTIES_ENDPOINT = "https://apihotelprod.1.us-1.fl0.io/api/Propiedades";
 
-export const RESERVATION_ENDPOINT = "https://hotelapi-xhz4-dev.fl0.io/api/Reservaciones";
+export const RESERVATION_ENDPOINT = "https://apihotelprod.1.us-1.fl0.io/api/Reservaciones/Usuario";
 
-export const CLIENTS_ENDPOINT = "https://hotelapi-xhz4-dev.fl0.io/api/Clientes";
+export const CLIENTS_ENDPOINT = "https://apihotelprod.1.us-1.fl0.io/api/Clientes";
 
-export const COMMENTS_ENDPOINT = "https://hotelapi-xhz4-dev.fl0.io/api/Comentarios";
-
-
+export const COMMENTS_ENDPOINT = "https://apihotelprod.1.us-1.fl0.io/api/Comentarios";
 
 
-/* SWAGGER: https://hotelapi-xhz4-dev.fl0.io/swagger/index.html */
+
+
+/* SWAGGER: https://apihotelprod.1.us-1.fl0.io/swagger/index.html */

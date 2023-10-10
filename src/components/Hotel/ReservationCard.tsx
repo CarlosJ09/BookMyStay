@@ -40,7 +40,7 @@ export default function ReservationCard(props: any) {
     propiedadId: propiedadId,
     fechaInicio: startDate, // Usar startDate en lugar de ""
     fechaFin: endDate, // Usar endDate en lugar de ""
-    estado: "activo",
+    estado: "Disfruta el viaje",
     total: total,
   };
 

@@ -5,5 +5,5 @@ export const CategoryList: string[] = [
   "Habitaciones",
   "Cúpulas",
   "Tropical",
-  "Mansiones",
+  "Villa",
 ];

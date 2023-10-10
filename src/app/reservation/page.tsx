@@ -13,8 +13,8 @@ export default async function Reservations() {
       <NavBar isActive={"reservacion"} />
       <div className="w-full flex justify-center">
         <div className="w-1/2 h-full text-center my-10">
-          <h2 className="text-xl">Past Reservations {user?.id}</h2>
-          <div>
+          <h2 className="text-xl">Past Reservations</h2>
+          <div className="my-10">
             <ReservationList clienteId={user?.id} />
           </div>
         </div>
@@ -23,7 +23,7 @@ export default async function Reservations() {
         </div>
         <div className="w-1/2 h-full text-center my-10">
           <h2 className="text-xl">Now</h2>
-          <div>
+          <div className="my-10">
             <ActiveReservation clienteId={user?.id} />
           </div>
         </div>

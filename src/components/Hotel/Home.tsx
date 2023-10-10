@@ -10,8 +10,10 @@ import { Pagination, Button } from "@nextui-org/react";
 import { PROPERTIES_ENDPOINT } from "../../consts/index";
 import { Propiedad } from "@/types/Propiedad";
 
-export default function Categories(): JSX.Element {
+export default function Categories(props: any): JSX.Element {
   const [properties, setProperties] = useState<Propiedad[]>();
+
+  const { idd } = props;
 
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -26,7 +28,7 @@ export default function Categories(): JSX.Element {
         setProperties(data);
       })
       .catch((error) => {
-        setProperties([])
+        setProperties([]);
         console.error("Error:", error);
       });
   }, [currentPage, selectedCategory]);
@@ -54,11 +56,15 @@ export default function Categories(): JSX.Element {
           </Button>
         ))}
       </div>
-      <div className="gap-12 grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mx-auto my-10">
-        {properties?.length === 0 ? (
-          <p className="flex justify-center items-center text-2xl">No hay propiedades disponibles con esas características.</p>
-        ) : (
-          properties?.map((hotel) => (
+      <div
+        className={
+          !(Array.isArray(properties) && properties.length > 0)
+            ? "w-full h-full flex justify-center items-center mx-auto my-auto"
+            : "gap-12 grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mx-auto my-10"
+        }
+      >
+        {Array.isArray(properties) && properties.length > 0 ? (
+          properties.map((hotel) => (
             <PropertyCard
               key={hotel.id}
               id={hotel.id}
@@ -72,6 +78,10 @@ export default function Categories(): JSX.Element {
               numeroDeHabitaciones={hotel.numeroDeHabitaciones}
             ></PropertyCard>
           ))
+        ) : (
+          <p className="mt-20">
+            No hay propiedades disponibles con esas caracteristicas.
+          </p>
         )}
       </div>
       <div className="fixed bottom-4 inset-x-0 flex justify-center z-50">

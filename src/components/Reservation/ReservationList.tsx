@@ -21,18 +21,28 @@ export default function ReservationList(props: any) {
   return (
     <div className="w-full flex justify-center">
       <div>
-        {reservations?.map((reservation) => (
-          <ReservationCard
-            key={reservation.id}
-            id={reservation.id}
-            clienteId={reservation.clienteId}
-            propiedadId={reservation.propiedadId}
-            fechaInicio={reservation.fechaInicio}
-            fechaFin={reservation.fechaFin}
-            estado={reservation.estado}
-            total={reservation.total}
-          ></ReservationCard>
-        ))}
+        {reservations?.length === 0 || !reservations ? (
+          <p className="mt-32 text-lg">
+            No cuenta con ninguna reservación hasta la fecha.
+          </p>
+        ) : (
+          reservations
+            ?.filter((reservation) => reservation.estado != "Disfruta el viaje")
+            .map((reservation) => (
+              <div>
+                <ReservationCard
+                  key={reservation.id}
+                  id={reservation.id}
+                  clienteId={reservation.clienteId}
+                  propiedadId={reservation.propiedadId}
+                  fechaInicio={reservation.fechaInicio}
+                  fechaFin={reservation.fechaFin}
+                  estado={reservation.estado}
+                  total={reservation.total}
+                ></ReservationCard>
+              </div>
+            ))
+        )}
       </div>
     </div>
   );

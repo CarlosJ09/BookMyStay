@@ -21,7 +21,11 @@ import {
   Button,
 } from "@nextui-org/react";
 
-export default function Hotel({ params }: any) {
+export type Params = {
+  params: { id: string };
+};
+
+export default function Hotel({ params }: Params) {
   const [property, setProperty] = useState<Propiedad>();
 
   useEffect(() => {

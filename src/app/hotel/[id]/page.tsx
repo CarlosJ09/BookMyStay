@@ -22,7 +22,7 @@ import {
   Button,
 } from "@nextui-org/react";
 
-export default function Hotel({ params }: Params) {
+export default function Hotel({ params }: any) {
   const [property, setProperty] = useState<Propiedad>();
 
   useEffect(() => {

@@ -13,7 +13,7 @@ export default async function Reservations() {
       <NavBar isActive={"reservacion"} />
       <div className="w-full flex justify-center">
         <div className="w-1/2 h-full text-center my-10">
-          <h2 className="text-xl">Past Reservations</h2>
+          <h2 className="text-xl">Historial de Reservaciones</h2>
           <div className="my-10">
             <ReservationList clienteId={user?.id} />
           </div>
@@ -22,7 +22,7 @@ export default async function Reservations() {
           <VerticalDivider />
         </div>
         <div className="w-1/2 h-full text-center my-10">
-          <h2 className="text-xl">Now</h2>
+          <h2 className="text-xl">Reservaciones Activas</h2>
           <div className="my-10">
             <ActiveReservation clienteId={user?.id} />
           </div>

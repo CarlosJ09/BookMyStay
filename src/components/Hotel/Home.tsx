@@ -2,32 +2,29 @@
 
 import { CategoryList } from "../../utils/CategoryList";
 import { useEffect, useState } from "react";
-
 import PropertyCard from "@/components/Hotel/PropertyCard";
-
-import { Pagination, Button } from "@nextui-org/react";
-
+import { Pagination, Button, Spinner } from "@nextui-org/react";
 import { PROPERTIES_ENDPOINT } from "../../consts/index";
 import { Propiedad } from "@/types/Propiedad";
 
-export default function Categories(props: any): JSX.Element {
+export default function Categories(): JSX.Element {
   const [properties, setProperties] = useState<Propiedad[]>();
-
-  const { idd } = props;
-
   const [selectedCategory, setSelectedCategory] = useState("");
-
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(
       `${PROPERTIES_ENDPOINT}?pageNumber=${currentPage}&pageSize=${20}&tipo=${selectedCategory}`
     )
       .then((res) => res.json())
       .then((data) => {
         setProperties(data);
+        setIsLoading(false);
       })
       .catch((error) => {
+        setIsLoading(false); // Set loading state to false in case of an error
         setProperties([]);
         console.error("Error:", error);
       });
@@ -58,12 +55,18 @@ export default function Categories(props: any): JSX.Element {
       </div>
       <div
         className={
-          !(Array.isArray(properties) && properties.length > 0)
+          isLoading
+            ? "w-full h-full flex justify-center items-center mx-auto my-auto"
+            : !(Array.isArray(properties) && properties.length > 0)
             ? "w-full h-full flex justify-center items-center mx-auto my-auto"
             : "gap-12 grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mx-auto my-10"
         }
       >
-        {Array.isArray(properties) && properties.length > 0 ? (
+        {isLoading ? (
+          <div className="fixed w-screen h-screen flex justify-center items-center m-auto inset-0">
+            <Spinner color="secondary" />
+          </div>
+        ) : Array.isArray(properties) && properties.length > 0 ? (
           properties.map((hotel) => (
             <PropertyCard
               key={hotel.id}
@@ -80,7 +83,7 @@ export default function Categories(props: any): JSX.Element {
           ))
         ) : (
           <p className="mt-20">
-            No hay propiedades disponibles con esas caracteristicas.
+            No hay propiedades disponibles with esas caracteristicas.
           </p>
         )}
       </div>

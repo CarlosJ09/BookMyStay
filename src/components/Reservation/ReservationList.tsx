@@ -29,18 +29,16 @@ export default function ReservationList(props: any) {
           reservations
             ?.filter((reservation) => reservation.estado != "Disfruta el viaje")
             .map((reservation) => (
-              <div>
-                <ReservationCard
-                  key={reservation.id}
-                  id={reservation.id}
-                  clienteId={reservation.clienteId}
-                  propiedadId={reservation.propiedadId}
-                  fechaInicio={reservation.fechaInicio}
-                  fechaFin={reservation.fechaFin}
-                  estado={reservation.estado}
-                  total={reservation.total}
-                ></ReservationCard>
-              </div>
+              <ReservationCard
+                key={reservation.id}
+                id={reservation.id}
+                clienteId={reservation.clienteId}
+                propiedadId={reservation.propiedadId}
+                fechaInicio={reservation.fechaInicio}
+                fechaFin={reservation.fechaFin}
+                estado={reservation.estado}
+                total={reservation.total}
+              ></ReservationCard>
             ))
         )}
       </div>

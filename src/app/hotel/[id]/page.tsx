@@ -48,9 +48,9 @@ export default function Hotel({ params }: Params) {
       <div className="w-full flex-wrap grid grid-cols-2 gap-4">
         <div className="w-full flex flex-col justify-center gap-8 items-center col-span-1 mt-12">
           <div className="flex justify-center items-center gap-4">
-            <h1 className=" text-3xl">{property?.nombre}</h1>
-            <Chip color="secondary" variant="solid">
-              {property?.tipo}
+            <h1 className=" text-3xl text-center">{property?.nombre}</h1>
+            <Chip className="w-60" color="secondary" variant="solid">
+              <p className="w-full flex-nowrap">{property?.tipo}</p>
             </Chip>
           </div>
           <div className="w-96">
@@ -103,8 +103,8 @@ export default function Hotel({ params }: Params) {
                     <div className="px-1 py-2">
                       <div className="text-xs">
                         Para agregar un comentario debe haber reservado esta
-                        propiedad al menos una vez, podrá hacerlo en la sección de
-                        Reservaciones.
+                        propiedad al menos una vez, podrá hacerlo en la sección
+                        de Reservaciones.
                       </div>
                     </div>
                   </PopoverContent>
@@ -112,15 +112,19 @@ export default function Hotel({ params }: Params) {
               </div>
               <div className="w-11/12 h-fit min-h-unit-8 max-h-60 text-base flex flex-col items-start justify-start gap-x-8 overflow-y-auto border-1 rounded-lg">
                 {comments && comments.length > 0 ? (
-                  comments.map((comentario, index) => (
-                    <div key={index}>
-                      <h3 className="font-bold p-2">{comentario?.clienteId}</h3>
-                      <p className="py-4 text-justify px-2">
-                        {comentario?.texto}
-                      </p>
-                      {index < comments.length - 1 && <HorizontalDivider />}
-                    </div>
-                  ))
+                  comments
+                    .filter((comment) => comment.propiedadId == property?.id)
+                    .map((comentario, index) => (
+                      <div key={index}>
+                        <h3 className="font-bold p-2">
+                          {comentario?.clienteId}
+                        </h3>
+                        <p className="py-4 text-justify px-2">
+                          {comentario?.texto}
+                        </p>
+                        {index < comments.length - 1 && <HorizontalDivider />}
+                      </div>
+                    ))
                 ) : (
                   <p className="my-8 self-center">
                     {"No hay comentarios aquí todavía :)"}

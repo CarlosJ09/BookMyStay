@@ -23,17 +23,17 @@ export default async function NavBar(props: any): Promise<JSX.Element> {
       <NavbarContent className="hidden sm:flex gap-6" justify="center">
         <NavbarItem>
           <Link color="foreground" className={`${isActive == "reservacion" ? 'font-bold text-blue-800' : ''}`} href="/reservation">
-            Reservations
+            Reservaciones
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" className={`${isActive == "hotel" ? 'font-bold text-blue-800' : ''}`} href="/">
-            Hotels
+            Propiedades
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" className={`${isActive == "about" ? 'font-bold text-blue-800' : ''}`} href="/about">
-            About us
+            Sobre Nosotros
           </Link>
         </NavbarItem>
       </NavbarContent>

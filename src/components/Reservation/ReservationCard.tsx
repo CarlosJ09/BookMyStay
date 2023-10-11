@@ -37,7 +37,7 @@ export default function ReservationCard(props: Reservacion): JSX.Element {
           </Chip>
         )}
       </div>
-      {estado == "Disfruta el viaje" ? (
+      {estado === "Disfruta el viaje" || "Prepara tus maletas" ? (
         <div className="absolute right-4 bottom-4">
           <ModalDelete reservationId={id} />
         </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import { CategoryList } from "../../utils/CategoryList";
 import { useEffect, useState } from "react";
 import PropertyCard from "@/components/Hotel/PropertyCard";
 import { Pagination, Button, Spinner } from "@nextui-org/react";
@@ -12,6 +11,7 @@ export default function Categories(): JSX.Element {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [CategoryList, setCategoryList] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,11 +24,22 @@ export default function Categories(): JSX.Element {
         setIsLoading(false);
       })
       .catch((error) => {
-        setIsLoading(false); // Set loading state to false in case of an error
+        setIsLoading(false);
         setProperties([]);
         console.error("Error:", error);
       });
   }, [currentPage, selectedCategory]);
+
+  useEffect(() => {
+    fetch(`${PROPERTIES_ENDPOINT}/tipos`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCategoryList(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
 
   const handleCategoryClick = (category: string) => {
     if (selectedCategory === category) {

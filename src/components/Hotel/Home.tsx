@@ -94,7 +94,7 @@ export default function Categories(): JSX.Element {
           ))
         ) : (
           <p className="mt-20">
-            No hay propiedades disponibles with esas caracteristicas.
+            No hay propiedades disponibles con esas caracteristicas.
           </p>
         )}
       </div>

@@ -26,7 +26,9 @@ export default function ActiveReservation(props: any) {
     <div className="w-full flex justify-center">
       <div className="flex flex-col gap-6">
         {isLoading ? (
-          <Spinner />
+          <div className="mt-32">
+            <Spinner />
+          </div>
         ) : reservations?.filter(
             (reservation) => reservation.estado === "Disfruta el viaje"
           ).length === 0 || !reservations ? (

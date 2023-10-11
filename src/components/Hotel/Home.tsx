@@ -50,7 +50,7 @@ export default function Categories(): JSX.Element {
   };
 
   return (
-    <div>
+    <div className="w-full flex flex-col justify-center items-center">
       <div className="flex flex-wrap justify-center gap-4 lg:gap-8 mx-10">
         {CategoryList.map((category: string, index) => (
           <Button
@@ -70,7 +70,7 @@ export default function Categories(): JSX.Element {
             ? "w-full h-full flex justify-center items-center mx-auto my-auto"
             : !(Array.isArray(properties) && properties.length > 0)
             ? "w-full h-full flex justify-center items-center mx-auto my-auto"
-            : "gap-12 grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mx-auto my-10"
+            : "gap-12 grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 self-center my-10"
         }
       >
         {isLoading ? (

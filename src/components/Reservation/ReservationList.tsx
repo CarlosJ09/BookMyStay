@@ -26,7 +26,9 @@ export default function ReservationList(props: any) {
     <div className="w-full flex justify-center">
       <div className="flex flex-col gap-6">
         {isLoading ? (
-          <Spinner />
+          <div className="mt-32">
+            <Spinner />
+          </div>
         ) : reservations?.length === 0 || !reservations ? (
           <p className="mt-32 text-lg text-danger-500">
             No cuenta con ninguna reservación hasta la fecha.

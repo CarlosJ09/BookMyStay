@@ -1,6 +1,5 @@
 "use client";
 
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { Propiedad } from "@/types/Propiedad";
 import ReservationCard from "@/components/Hotel/ReservationCard";
 

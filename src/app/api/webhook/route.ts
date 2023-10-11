@@ -59,15 +59,19 @@ export async function POST(req: Request) {
 
   switch (eventType) {
     case "user.created":
-      const clientData = {
-        id: evt.data.id,
-        nombre: evt.data.first_name,
-        apellido: evt.data.last_name || "",
-        email: evt.data.email_addresses[0].email_address,
-        phoneNumber: "",
-      };
+      const clientData = new FormData();
+      clientData.append("Id", evt.data.id);
+      clientData.append("Nombre", evt.data.first_name);
+      clientData.append("Apellido", evt.data.last_name || "a");
+      clientData.append("Email", evt.data.email_addresses[0].email_address);
+      clientData.append("PhoneNumber", "0000000000");
+      clientData.append(
+        "FechaRegistro",
+        new Date().toISOString().split("T")[0]
+      );
+      
       saveClient(`${CLIENTS_ENDPOINT}/Register`, clientData);
-      return new Response(`Cliente ${clientData.id} creado con exito`, {
+      return new Response(`Cliente ${evt.data.id} creado con exito`, {
         status: 201,
       });
 

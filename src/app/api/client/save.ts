@@ -1,14 +1,9 @@
-import { Cliente } from "@/types/Cliente";
-
-export async function saveClient(url: string, clientData: Cliente) {
+export async function saveClient(url: string, clientData: any) {
   try {
     const response = await fetch(url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       mode: "cors",
-      body: JSON.stringify(clientData),
+      body: clientData,
     });
 
     if (response.status === 201) {

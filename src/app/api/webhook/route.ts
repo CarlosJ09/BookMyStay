@@ -66,7 +66,7 @@ export async function POST(req: Request) {
         email: evt.data.email_addresses[0].email_address,
         phoneNumber: "",
       };
-      saveClient(CLIENTS_ENDPOINT, clientData);
+      saveClient(`${CLIENTS_ENDPOINT}/Register`, clientData);
       return new Response(`Cliente ${clientData.id} creado con exito`, {
         status: 201,
       });

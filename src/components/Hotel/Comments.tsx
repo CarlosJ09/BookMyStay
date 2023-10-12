@@ -55,7 +55,7 @@ export default function Comments() {
         {comments && comments.length < 0 ? (
           comments.map((comentario, index) => (
             <div key={index}>
-              <h3 className="font-bold p-2">{comentario?.clienteId}</h3>
+              <h3 className="font-bold p-2">{comentario?.nombre}</h3>
               <p className="py-4 text-justify px-2">{comentario?.texto}</p>
               {index < comments.length - 1 && <HorizontalDivider />}
             </div>

@@ -30,7 +30,9 @@ export default function ActiveReservation(props: any) {
             <Spinner />
           </div>
         ) : reservations?.filter(
-            (reservation) => reservation.estado === "Disfruta el viaje"
+            (reservation) =>
+              reservation.estado === "Disfruta el viaje" ||
+              reservation.estado === "Prepara tus maletas"
           ).length === 0 || !reservations ? (
           <p className="mt-32 text-lg text-danger-500">
             No hay reservaciones activas.

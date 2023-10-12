@@ -8,6 +8,8 @@ import { Propiedad } from "@/types/Propiedad";
 
 export default function Categories(): JSX.Element {
   const [properties, setProperties] = useState<Propiedad[]>();
+  const [numberOfPages, setNumberOfPages] = useState<Propiedad[]>();
+
   const [selectedCategory, setSelectedCategory] = useState("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState(true);
@@ -29,6 +31,18 @@ export default function Categories(): JSX.Element {
         console.error("Error:", error);
       });
   }, [currentPage, selectedCategory]);
+
+  useEffect(() => {
+    fetch(`${PROPERTIES_ENDPOINT}?tipo=${selectedCategory}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setNumberOfPages(data);
+      })
+      .catch((error) => {
+        setNumberOfPages([]);
+        console.error("Error:", error);
+      });
+  }, [selectedCategory]);
 
   useEffect(() => {
     fetch(`${PROPERTIES_ENDPOINT}/tipos`)
@@ -102,8 +116,9 @@ export default function Categories(): JSX.Element {
         <Pagination
           page={currentPage}
           onChange={setCurrentPage}
-          total={20}
+          total={numberOfPages ? Math.ceil(numberOfPages.length / 20) : 0}
           initialPage={1}
+          dotsJump={0}
         />
       </div>
     </div>

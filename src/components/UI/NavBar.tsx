@@ -54,7 +54,7 @@ export default async function NavBar(props: any): Promise<JSX.Element> {
             Sobre Nosotros
           </Link>
         </NavbarItem>
-        <NavbarItem>
+        {/* <NavbarItem>
           <Link
             color="foreground"
             className={`${
@@ -66,7 +66,7 @@ export default async function NavBar(props: any): Promise<JSX.Element> {
           >
             Propietario
           </Link>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
       {!user ? (
         <NavbarContent justify="end">
